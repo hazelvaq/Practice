@@ -4,4 +4,47 @@ format: html
 editor: visual
 ---
 
-## DAY 4 PRACTICE
+```{r}
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+## Basic data exploration
+
+Tools for checking out data
+
+-   names: get variables names
+
+-   dim: get data dimensions
+
+-   head: get first n lines (6 by default)
+
+-   tail: get last n lines (6 by default)
+
+-   summary: get basic summary statistics
+
+```{r}
+names(penguins)
+
+dim(penguins)
+
+head(penguins)
+
+tail(penguins)
+
+summary(penguins)
+
+# Another summary use skims and gives statistical 
+skim(penguins)
+## or ::skim??
+```
+
+```{r}
+## Creating a whole grid of visualizations multiple graphs with respect to multiple variables
+# Quick glimpse of values
+ggpairs(penguins)
+
+##GGally::ggpairs()
+```
