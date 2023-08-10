@@ -2,7 +2,11 @@
 title: "Day 4 Practice"
 format: html
 editor: visual
+execute: 
+  warning: false
 ---
+
+Can add execute: warning: false to get rid of warnings when running code in the yamel
 
 ```{r}
 library(GGally)
@@ -47,4 +51,31 @@ skim(penguins)
 ggpairs(penguins)
 
 ##GGally::ggpairs()
+```
+
+## Making more exploratory charts in ggplot2
+
+Histogram: 1 variable chart and then R will count the \# of obersvations in each bin
+
+```{r}
+# Fill describes if you have a polygon shape
+# Stroke is the outline (fill = '')
+# Geom_point has a fill only
+ggplot(data = penguins, aes(x = penguins$flipper_length_mm)) + geom_histogram(fill = 'orange',color = "purple" ) + theme_minimal()
+
+
+ggplot(data = penguins, aes(x = penguins$flipper_length_mm)) + geom_histogram(aes(fill = species)) + theme_minimal()
+```
+
+Boxplot
+
+```{r}
+ggplot(data = penguins, aes(x = penguins$species, y = penguins$bill_length_mm)) + geom_boxplot(fill = 'yellow', aes(color = island))+theme_dark()
+
+## You can stack plots on top of each other
+## alpha will change the transparancy 
+## Size based on bill depth 
+ggplot(data = penguins, aes(x = penguins$species, y = penguins$bill_length_mm)) + geom_boxplot(fill = 'yellow', aes(color = island))+ geom_jitter(color = "Magenta",alpha = 0.5, aes(size = penguins$bill_depth_mm))+
+  theme_dark()
+
 ```
